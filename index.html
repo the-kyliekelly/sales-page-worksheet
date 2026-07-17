@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Recording Prompt Worksheet · Kylie Kelly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-black:#1a1a1a;
+    --color-white:#ffffff;
+    --color-off-white:#f5f4f2;
+    --color-pink:#e040fb;
+    --color-pink-light:#a3c93a;
+    --color-text-muted:#666666;
+    --color-warm-gray:#d4d0cc;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--color-off-white);
+    font-family:'Inter',sans-serif;
+    color:var(--color-black);
+    line-height:1.7;
+  }
+  .hero{
+    background:var(--color-black);
+    color:var(--color-white);
+    padding:72px 6% 56px;
+    text-align:center;
+  }
+  .hero .eyebrow{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--color-pink-light);
+    font-size:26px;
+    margin-bottom:12px;
+  }
+  .hero h1{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:clamp(32px,5vw,56px);
+    margin:0 0 20px;
+    line-height:1.15;
+  }
+  .hero p{
+    max-width:620px;
+    margin:0 auto;
+    font-size:16px;
+    color:#e8e8e8;
+    font-weight:300;
+  }
+  .hero .divider{
+    width:60px;
+    height:2px;
+    background:var(--color-pink);
+    margin:28px auto 0;
+    border:none;
+  }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:56px 6% 120px;
+  }
+  .intro-note{
+    background:var(--color-white);
+    border-left:3px solid var(--color-pink);
+    padding:24px 28px;
+    border-radius:4px;
+    font-size:15px;
+    color:var(--color-text-muted);
+    margin-bottom:48px;
+  }
+  .intro-note strong{color:var(--color-black);}
+  .progress-track{
+    position:sticky;
+    top:0;
+    background:var(--color-off-white);
+    padding:14px 0 22px;
+    z-index:10;
+  }
+  .progress-bar{
+    width:100%;
+    height:6px;
+    background:var(--color-warm-gray);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    width:0%;
+    background:var(--color-pink);
+    transition:width .3s ease;
+  }
+  .progress-label{
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--color-text-muted);
+    margin-top:8px;
+    font-weight:500;
+  }
+  .prompt-card{
+    background:var(--color-white);
+    border-radius:10px;
+    padding:36px 32px;
+    margin-bottom:28px;
+  }
+  .prompt-number{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:40px;
+    color:var(--color-pink);
+    line-height:1;
+    margin-bottom:8px;
+  }
+  .prompt-card .script{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:22px;
+    color:var(--color-black);
+    margin:0 0 6px;
+  }
+  .prompt-card h2{
+    font-family:'Playfair Display',serif;
+    font-size:26px;
+    font-weight:700;
+    margin:0 0 14px;
+  }
+  .prompt-card .helper{
+    font-size:15px;
+    color:var(--color-text-muted);
+    margin-bottom:18px;
+  }
+  .prompt-card .helper ul{
+    margin:10px 0 0;
+    padding-left:20px;
+  }
+  .prompt-card .helper li{
+    margin-bottom:6px;
+  }
+  textarea{
+    width:100%;
+    min-height:120px;
+    border:1.5px solid var(--color-warm-gray);
+    border-radius:8px;
+    padding:16px;
+    font-family:'Inter',sans-serif;
+    font-size:15px;
+    color:var(--color-black);
+    resize:vertical;
+    background:var(--color-off-white);
+  }
+  textarea:focus{
+    outline:none;
+    border-color:var(--color-pink);
+  }
+  .divider-thin{
+    border:none;
+    height:2px;
+    background:var(--color-pink);
+    width:100%;
+    opacity:0.25;
+    margin:12px 0 40px;
+  }
+  .action-bar{
+    background:var(--color-white);
+    border-radius:10px;
+    padding:36px 32px;
+    text-align:center;
+    margin-top:8px;
+  }
+  .action-bar h3{
+    font-family:'Playfair Display',serif;
+    font-size:24px;
+    margin:0 0 10px;
+  }
+  .action-bar p{
+    font-size:14px;
+    color:var(--color-text-muted);
+    margin:0 0 24px;
+  }
+  .btn-row{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  button.btn-primary, button.btn-outline{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:14px 32px;
+    border-radius:50px;
+    border:none;
+    cursor:pointer;
+  }
+  button.btn-primary{
+    background:var(--color-black);
+    color:var(--color-white);
+  }
+  button.btn-outline{
+    background:transparent;
+    color:var(--color-black);
+    border:1.5px solid var(--color-black);
+  }
+  button.btn-primary:hover{background:var(--color-pink);}
+  button.btn-outline:hover{border-color:var(--color-pink); color:var(--color-pink);}
+  .copy-confirm{
+    font-size:13px;
+    color:var(--color-pink);
+    font-weight:600;
+    margin-top:16px;
+    height:16px;
+    opacity:0;
+    transition:opacity .2s ease;
+  }
+  .copy-confirm.show{opacity:1;}
+  footer{
+    text-align:center;
+    padding:32px 6% 48px;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--color-text-muted);
+  }
+  footer a{color:inherit;text-decoration:none;border-bottom:1px solid transparent;}
+  footer a:hover{color:var(--color-pink);border-bottom-color:var(--color-pink);}
+  @media(max-width:600px){
+    .prompt-card{padding:26px 20px;}
+    .hero{padding:56px 6% 40px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">before you build the page</div>
+  <h1>The Recording Prompt Worksheet</h1>
+  <p>Answer these seven prompts out loud. Voice memo, not typing. Then hand the transcript to Claude. This is the raw material your sales page gets built from.</p>
+  <hr class="divider">
+</div>
+
+<div class="wrap">
+
+  <div class="intro-note">
+    <strong>How to use this:</strong> Read each prompt, hit record on a voice memo app, and just talk. Don't overthink it or write a script. The messier and more natural, the better copy Claude has to work with. Type a few keyword notes in each box if it helps you remember what to say, then transcribe (or paste) your recording into the matching box before you export.
+  </div>
+
+  <div class="progress-track">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">0 of 7 prompts started</div>
+  </div>
+
+  <!-- Prompt 1 -->
+  <div class="prompt-card">
+    <div class="prompt-number">01</div>
+    <p class="script">the offer, plainly</p>
+    <h2>What is it, exactly?</h2>
+    <div class="helper">
+      Say the name of the offer, the price, the format, and what someone gets immediately after they buy.
+      <ul>
+        <li>What's it called, and what's the price?</li>
+        <li>Is it a course, a template, a call, a bundle?</li>
+        <li>What do they receive the moment they pay: instant access, a link, a booking?</li>
+      </ul>
+    </div>
+    <textarea data-key="p1" placeholder="e.g. 50 A Day is a $27 self-paced mini course..."></textarea>
+  </div>
+
+  <!-- Prompt 2 -->
+  <div class="prompt-card">
+    <div class="prompt-number">02</div>
+    <p class="script">the before</p>
+    <h2>Where is she stuck right now?</h2>
+    <div class="helper">
+      Describe her current frustration in her own words, not yours. Rant a little.
+      <ul>
+        <li>What's she tried already that hasn't worked?</li>
+        <li>What does an average week look like for her right now, because of this problem?</li>
+        <li>What's she telling herself about why it's not working?</li>
+      </ul>
+    </div>
+    <textarea data-key="p2" placeholder="e.g. She's posting every day and getting nothing back for it..."></textarea>
+  </div>
+
+  <!-- Prompt 3 -->
+  <div class="prompt-card">
+    <div class="prompt-number">03</div>
+    <p class="script">the after</p>
+    <h2>What changes once she's done this?</h2>
+    <div class="helper">
+      Paint the specific, tangible result. Not a vague feeling.
+      <ul>
+        <li>What can she do in 30 days that she can't do today?</li>
+        <li>What does that mean for her business, her time, or her income?</li>
+        <li>Is there a number, timeframe, or outcome you can point to?</li>
+      </ul>
+    </div>
+    <textarea data-key="p3" placeholder="e.g. She'll have 50 new subscribers a day without touching social media..."></textarea>
+  </div>
+
+  <!-- Prompt 4 -->
+  <div class="prompt-card">
+    <div class="prompt-number">04</div>
+    <p class="script">what's inside</p>
+    <h2>Walk me through what's included</h2>
+    <div class="helper">
+      Talk through it like you're showing a friend around. Don't worry about order.
+      <ul>
+        <li>List every module, template, bonus, or component</li>
+        <li>For each one, what does it actually help her do?</li>
+        <li>Anything time-sensitive, limited, or bonus-only?</li>
+      </ul>
+    </div>
+    <textarea data-key="p4" placeholder="e.g. Module 1 covers list building without ads, Module 2 is..."></textarea>
+  </div>
+
+  <!-- Prompt 5 -->
+  <div class="prompt-card">
+    <div class="prompt-number">05</div>
+    <p class="script">who it's for (and who it's not)</p>
+    <h2>Who should buy this, and who shouldn't?</h2>
+    <div class="helper">
+      Being specific about who this ISN'T for makes the right people trust it more.
+      <ul>
+        <li>What stage of business is she in?</li>
+        <li>What has she already tried or already know?</li>
+        <li>Who should skip this offer entirely?</li>
+      </ul>
+    </div>
+    <textarea data-key="p5" placeholder="e.g. This is for coaches with an existing list who want to grow it without social..."></textarea>
+  </div>
+
+  <!-- Prompt 6 -->
+  <div class="prompt-card">
+    <div class="prompt-number">06</div>
+    <p class="script">the objections</p>
+    <h2>What's she thinking right before she closes the tab?</h2>
+    <div class="helper">
+      Say the doubts out loud, then answer them like you would in a DM.
+      <ul>
+        <li>"I've tried things like this before and..."</li>
+        <li>"I don't have time for..."</li>
+        <li>"How is this different from [free thing / competitor]?"</li>
+      </ul>
+    </div>
+    <textarea data-key="p6" placeholder="e.g. She'll worry it's too advanced for her, but really..."></textarea>
+  </div>
+
+  <!-- Prompt 7 -->
+  <div class="prompt-card">
+    <div class="prompt-number">07</div>
+    <p class="script">the why</p>
+    <h2>Why did you make this, and why now?</h2>
+    <div class="helper">
+      This is the part that makes it sound like you, not a template. Tell the real story.
+      <ul>
+        <li>What prompted you to create this offer?</li>
+        <li>Any proof it works, for you or for someone else?</li>
+        <li>Is there urgency: a deadline, live testing window, limited spots, launch pricing?</li>
+      </ul>
+    </div>
+    <textarea data-key="p7" placeholder="e.g. I built this after testing it with cold Meta traffic myself..."></textarea>
+  </div>
+
+  <div class="action-bar">
+    <h3>Ready to hand this to Claude</h3>
+    <p>This pulls all seven answers into one clean transcript. Paste it straight into your chat with the sales page template.</p>
+    <div class="btn-row">
+      <button class="btn-primary" onclick="copyAll()">Copy My Answers</button>
+      <button class="btn-outline" onclick="downloadAll()">Download as .txt</button>
+    </div>
+    <div class="copy-confirm" id="copyConfirm">Copied to clipboard ✓</div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="https://kyliekelly.com/" target="_blank" rel="noopener">Kylie Kelly</a>
+  &nbsp;&middot;&nbsp;
+  Sales Pages With Claude
+  &nbsp;&middot;&nbsp;
+  <a href="https://kyliekelly.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+</footer>
+
+<script>
+  const textareas = document.querySelectorAll('textarea');
+  const labels = [
+    'What is it, exactly?',
+    'Where is she stuck right now?',
+    "What changes once she's done this?",
+    "Walk me through what's included",
+    "Who should buy this, and who shouldn't?",
+    "What's she thinking right before she closes the tab?",
+    'Why did you make this, and why now?'
+  ];
+
+  function updateProgress(){
+    let filled = 0;
+    textareas.forEach(t => { if(t.value.trim().length > 0) filled++; });
+    const pct = Math.round((filled / textareas.length) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = filled + ' of ' + textareas.length + ' prompts started';
+  }
+
+  textareas.forEach(t => t.addEventListener('input', updateProgress));
+
+  function buildTranscript(){
+    let out = "SALES PAGE RECORDING TRANSCRIPT\n\n";
+    textareas.forEach((t, i) => {
+      out += (i+1) + ". " + labels[i] + "\n";
+      out += (t.value.trim() || "[not answered]") + "\n\n";
+    });
+    return out;
+  }
+
+  function copyAll(){
+    const text = buildTranscript();
+    navigator.clipboard.writeText(text).then(() => {
+      const el = document.getElementById('copyConfirm');
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 2200);
+    });
+  }
+
+  function downloadAll(){
+    const text = buildTranscript();
+    const blob = new Blob([text], {type:'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'sales-page-recording-transcript.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+</script>
+
+</body>
+</html>
